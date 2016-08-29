@@ -64,7 +64,7 @@ public class Ant {
      * rules for the move of an Ant
      ******************************/
     public void move(){
-   // System.out.println("move direction="+direction+" posX="+posX+" posY="+posY);
+    System.out.println("move direction="+direction+" posX="+posX+" posY="+posY);
         switch(direction){
       
             case 0:

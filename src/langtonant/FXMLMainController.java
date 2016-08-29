@@ -45,6 +45,9 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javax.imageio.ImageIO;
 
 /**
@@ -63,8 +66,6 @@ public class FXMLMainController implements Initializable {
     @FXML
     private Spinner<Integer> worldsizex;
     @FXML
-    private Spinner<Integer> worldsizey;
-    @FXML
     private Spinner<Integer> antposx;
     @FXML
     private Spinner<Integer> antposy;
@@ -72,13 +73,16 @@ public class FXMLMainController implements Initializable {
     private ComboBox<String> antdirection;
     @FXML
     private Spinner<Integer> nbiteration;
-     @FXML
+    @FXML
     private Spinner<Integer> iterspeed;
-      @FXML
+    @FXML
     private Button btnSaveImg;
     @FXML
     private ColorPicker colorAnt;
-    
+    @FXML
+    private Button btnRandSim;
+      
+      
     //init values
     private int WIDTH=100;
     private int HEIGHT=100;
@@ -89,6 +93,7 @@ public class FXMLMainController implements Initializable {
     private int speed=5;
     private long lifeCycle=0;
     private javafx.scene.paint.Color colorizedAnt=javafx.scene.paint.Color.WHITE;
+    private boolean stop=false;
     
     //world and Ant
     private World world;
@@ -101,11 +106,13 @@ public class FXMLMainController implements Initializable {
     ObservableList<String> olDirection=javafx.collections.FXCollections.observableArrayList();
   
     SpinnerValueFactory<Integer> wsx;
-    SpinnerValueFactory<Integer> wsy;
     SpinnerValueFactory<Integer> apx;
     SpinnerValueFactory<Integer> apy;
     SpinnerValueFactory<Integer> nbi;
     SpinnerValueFactory<Integer> spe;
+    @FXML
+    private Button btnStop;
+  
   
     
    
@@ -114,18 +121,14 @@ public class FXMLMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //initialize world / Ant / Spinner / etc...
-        wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 800);
+        wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 500);
         wsx.setValue(100);
-        wsy = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 800);
-        wsy.setValue(100);
         apx = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
         apy = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
         nbi=new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 1000000);
         nbi.setValue(20000);
         worldsizex.setValueFactory(wsx);
         worldsizex.setEditable(true);
-        worldsizey.setValueFactory(wsy);
-        worldsizey.setEditable(true);
         antposx.setValueFactory(apx);
         antposx.setEditable(true);
         antposy.setValueFactory(apy);
@@ -152,9 +155,11 @@ public class FXMLMainController implements Initializable {
         //initialise world and Ant with the user chooses
          btnSaveImg.setDisable(true);
          btnRun.setDisable(true);
+         btnStop.setDisable(false);
+         stop=false;
         //first the World
         WIDTH=wsx.getValue();
-        HEIGHT=wsy.getValue(); 
+        HEIGHT=wsx.getValue(); 
         world.init_world(WIDTH, HEIGHT);
         //Caracteristics of the life Cycle
         speed=iterspeed.getValue();
@@ -201,6 +206,8 @@ Task task = new Task<Void>() {
                //ooh not too speed please!!!
                Thread.sleep(speed);
                //and repeat repeat repeat ----::>
+               //until stop is asking
+               if (stop) return null;
                lifeCycle++;
            } catch (InterruptedException ex) {
                Logger.getLogger(FXMLMainController.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +251,8 @@ Task task = new Task<Void>() {
         screenShot();
     }
     
-      /***********************
+    
+    /***********************
      * ScreenShot of the World
      ***********************/
     public void screenShot()
@@ -266,6 +274,55 @@ Task task = new Task<Void>() {
     
     btnSaveImg.setDisable(true);
     
+    }
+
+    @FXML
+    private void hbtnRandSim(ActionEvent event) {
+        
+        //select nb of iterations
+        nbi.setValue((int)(Math.random()*1000000));
+         
+        //select size of the Screen
+        wsx.setValue((int)(Math.random()*400));
+        
+        //select ant Position
+        apx.setValue((int)(Math.random()*wsx.getValue()));
+        apy.setValue((int)(Math.random()*wsx.getValue()));
+        
+        //select direction
+        antdirection.getSelectionModel().select((int)(Math.random()*4));
+    }
+
+    
+    @FXML
+    private void hbtnStop(ActionEvent event) {
+        stop=true;
+        btnSaveImg.setDisable(true);
+         btnRun.setDisable(false);
+         btnStop.setDisable(true);
+    }
+
+    
+    @FXML
+    private void mcSpinWorldChange(MouseEvent event) {
+    int max;
+    if (antposx.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposx.getValue();}
+    apx=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
+    antposx.setValueFactory(apx);
+    if (antposy.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposy.getValue();}
+    apy=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
+    antposy.setValueFactory(apy);
+    
+    }
+
+    @FXML
+    private void mtcSpinWorldChange(InputMethodEvent event) {
+        mcSpinWorldChange(null);
+    }
+
+    @FXML
+    private void kpSpinWorldChange(KeyEvent event) {
+        mcSpinWorldChange(null);
     }
 
     

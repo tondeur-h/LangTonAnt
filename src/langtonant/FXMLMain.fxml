@@ -40,23 +40,23 @@ SOFTWARE.
             <DropShadow />
          </effect>
       </ImageView>
-      <Button fx:id="btnRun" layoutX="871.0" layoutY="13.0" mnemonicParsing="false" onAction="#hBtnRun" prefHeight="26.0" prefWidth="91.0" text="Run" />
+      <Button fx:id="btnRun" layoutX="824.0" layoutY="13.0" mnemonicParsing="false" onAction="#hBtnRun" prefHeight="26.0" prefWidth="91.0" text="Run" />
       <Label fx:id="lbIter" layoutX="517.0" layoutY="18.0" opacity="0.81" prefHeight="16.0" prefWidth="272.0" style="-fx-background-color: #DDDD00;" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="18.0" />
-      <Spinner fx:id="worldsizex" layoutX="925.0" layoutY="119.0" prefHeight="26.0" prefWidth="75.0" />
-      <Spinner fx:id="worldsizey" layoutX="925.0" layoutY="144.0" prefHeight="26.0" prefWidth="75.0" />
-      <Spinner fx:id="antposx" layoutX="925.0" layoutY="197.0" prefHeight="26.0" prefWidth="75.0" />
-      <Spinner fx:id="antposy" layoutX="925.0" layoutY="223.0" prefHeight="26.0" prefWidth="75.0" />
-      <ComboBox fx:id="antdirection" layoutX="850.0" layoutY="276.0" prefWidth="150.0" />
-      <Label layoutX="825.0" layoutY="124.0" prefHeight="16.0" prefWidth="98.0" text="World size X" />
-      <Label layoutX="825.0" layoutY="149.0" prefHeight="16.0" prefWidth="98.0" text="World size Y" />
-      <Label layoutX="825.0" layoutY="202.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
-      <Label layoutX="825.0" layoutY="228.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
-      <Label layoutX="825.0" layoutY="260.0" prefHeight="16.0" prefWidth="178.0" text="Ant initial Direction" />
+      <Spinner fx:id="worldsizex" layoutX="925.0" layoutY="119.0" onInputMethodTextChanged="#mtcSpinWorldChange" onKeyPressed="#kpSpinWorldChange" onMouseClicked="#mcSpinWorldChange" prefHeight="26.0" prefWidth="75.0" />
+      <Spinner fx:id="antposx" layoutX="926.0" layoutY="153.0" prefHeight="26.0" prefWidth="75.0" />
+      <Spinner fx:id="antposy" layoutX="926.0" layoutY="179.0" prefHeight="26.0" prefWidth="75.0" />
+      <ComboBox fx:id="antdirection" layoutX="851.0" layoutY="232.0" prefWidth="150.0" />
+      <Label layoutX="825.0" layoutY="124.0" prefHeight="16.0" prefWidth="98.0" text="World size X/Y" />
+      <Label layoutX="827.0" layoutY="158.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
+      <Label layoutX="827.0" layoutY="184.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
+      <Label layoutX="827.0" layoutY="216.0" prefHeight="16.0" prefWidth="178.0" text="Ant initial Direction" />
       <Spinner fx:id="nbiteration" layoutX="822.0" layoutY="69.0" prefHeight="26.0" prefWidth="178.0" />
       <Label layoutX="825.0" layoutY="53.0" text="Nb of iteration" />
-      <Spinner fx:id="iterspeed" layoutX="927.0" layoutY="321.0" prefHeight="26.0" prefWidth="75.0" />
-      <Label layoutX="825.0" layoutY="326.0" prefHeight="16.0" prefWidth="91.0" text="Speed" />
-      <Button fx:id="btnSaveImg" disable="true" layoutX="851.0" layoutY="500.0" mnemonicParsing="false" onAction="#hbtnSaveImg" prefHeight="26.0" prefWidth="137.0" text="Save Image" />
-      <ColorPicker fx:id="colorAnt" layoutX="835.0" layoutY="369.0" />
+      <Spinner fx:id="iterspeed" layoutX="928.0" layoutY="277.0" prefHeight="26.0" prefWidth="75.0" />
+      <Label layoutX="837.0" layoutY="282.0" prefHeight="16.0" prefWidth="91.0" text="Speed" />
+      <Button fx:id="btnSaveImg" disable="true" layoutX="851.0" layoutY="410.0" mnemonicParsing="false" onAction="#hbtnSaveImg" prefHeight="26.0" prefWidth="137.0" text="Save Image" />
+      <ColorPicker fx:id="colorAnt" layoutX="837.0" layoutY="325.0" />
+      <Button fx:id="btnRandSim" layoutX="837.0" layoutY="368.0" mnemonicParsing="false" onAction="#hbtnRandSim" prefHeight="26.0" prefWidth="163.0" text="Random Simulation" />
+      <Button fx:id="btnStop" layoutX="921.0" layoutY="13.0" mnemonicParsing="false" onAction="#hbtnStop" prefHeight="26.0" prefWidth="91.0" text="Stop" />
    </children>
 </AnchorPane>

@@ -47,7 +47,7 @@ public class Rules {
        //turnRIGHT();
       
        ant.setDirection(turnRIGHT(ant.getDirection())); 
-       //System.out.println("turn right=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
+       System.out.println("turn right=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
        //change color to none
        world.getLocation().set(World.XY2I(x, y), new Color(false,"NONE"));
        
@@ -57,7 +57,7 @@ public class Rules {
        //turnLEFT();
         
        ant.setDirection(turnLEFT(ant.getDirection()));
-       //System.out.println("turn left=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
+       System.out.println("turn left=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
        //change color to currentColor
         world.getLocation().set(World.XY2I(x, y), new Color(true,"RED"));
    }

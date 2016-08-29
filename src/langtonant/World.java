@@ -61,6 +61,8 @@ public class World {
      * @param y
      */
     public void init_world(int x, int y){
+        sizeX=x;
+        sizeY=y;
         location.setSize(x*y);
          for (int pos=0;pos<x*y;pos++){
         location.add(pos, new Color(false, "none"));
