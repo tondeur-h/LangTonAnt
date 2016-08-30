@@ -123,8 +123,8 @@ public class FXMLMainController implements Initializable {
         //initialize world / Ant / Spinner / etc...
         wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 500);
         wsx.setValue(100);
-        apx = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-        apy = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
+        apx = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+        apy = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
         nbi=new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 1000000);
         nbi.setValue(20000);
         worldsizex.setValueFactory(wsx);
@@ -276,6 +276,10 @@ Task task = new Task<Void>() {
     
     }
 
+    /**
+     * Randomize values for a simulation
+     * @param event 
+     */
     @FXML
     private void hbtnRandSim(ActionEvent event) {
         
@@ -294,6 +298,12 @@ Task task = new Task<Void>() {
     }
 
     
+    /**
+     * Stop the calculation
+     * ie: stop the Thread that make calculation
+     * by sending a stop semaphore to the Thread
+     * @param event 
+     */
     @FXML
     private void hbtnStop(ActionEvent event) {
         stop=true;
@@ -303,6 +313,11 @@ Task task = new Task<Void>() {
     }
 
     
+    /**
+     * constrol the maximum value for the Ant location
+     * in the World (depend of the world Size
+     * @param event 
+     */
     @FXML
     private void mcSpinWorldChange(MouseEvent event) {
     int max;

@@ -24,10 +24,12 @@ SOFTWARE.
 package langtonant;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -41,12 +43,21 @@ public class LangTonAnt extends Application {
         
         Scene scene = new Scene(root);
         
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+              //do nothing a this time  
+            }
+        });
+        
         stage.setTitle("Langton Ant simulator");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
 
+    
+    
     /**
      * @param args the command line arguments
      */
