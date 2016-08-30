@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -35,28 +38,88 @@ SOFTWARE.
 
 <AnchorPane id="AnchorPane" prefHeight="0.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="langtonant.FXMLMainController">
    <children>
-      <ImageView fx:id="imgWorld" fitHeight="800.0" fitWidth="800.0" layoutX="1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="3.0">
+      <ImageView fx:id="imgWorld" fitHeight="800.0" fitWidth="800.0" layoutX="1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="3.0">
          <effect>
             <DropShadow />
          </effect>
       </ImageView>
       <Button fx:id="btnRun" layoutX="824.0" layoutY="13.0" mnemonicParsing="false" onAction="#hBtnRun" prefHeight="26.0" prefWidth="91.0" text="Run" />
       <Label fx:id="lbIter" layoutX="517.0" layoutY="18.0" opacity="0.81" prefHeight="16.0" prefWidth="272.0" style="-fx-background-color: #DDDD00;" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="18.0" />
-      <Spinner fx:id="worldsizex" layoutX="925.0" layoutY="119.0" onInputMethodTextChanged="#mtcSpinWorldChange" onKeyPressed="#kpSpinWorldChange" onMouseClicked="#mcSpinWorldChange" prefHeight="26.0" prefWidth="75.0" />
-      <Spinner fx:id="antposx" layoutX="926.0" layoutY="153.0" prefHeight="26.0" prefWidth="75.0" />
-      <Spinner fx:id="antposy" layoutX="926.0" layoutY="179.0" prefHeight="26.0" prefWidth="75.0" />
-      <ComboBox fx:id="antdirection" layoutX="851.0" layoutY="232.0" prefWidth="150.0" />
-      <Label layoutX="825.0" layoutY="124.0" prefHeight="16.0" prefWidth="98.0" text="World size X/Y" />
-      <Label layoutX="827.0" layoutY="158.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
-      <Label layoutX="827.0" layoutY="184.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
-      <Label layoutX="827.0" layoutY="216.0" prefHeight="16.0" prefWidth="178.0" text="Ant initial Direction" />
+      <Spinner fx:id="worldsizex" layoutX="925.0" layoutY="99.0" onInputMethodTextChanged="#mtcSpinWorldChange" onKeyPressed="#kpSpinWorldChange" onMouseClicked="#mcSpinWorldChange" prefHeight="26.0" prefWidth="75.0" />
+      <Label layoutX="825.0" layoutY="104.0" prefHeight="16.0" prefWidth="98.0" text="World size X/Y" />
       <Spinner fx:id="nbiteration" layoutX="822.0" layoutY="69.0" prefHeight="26.0" prefWidth="178.0" />
       <Label layoutX="825.0" layoutY="53.0" text="Nb of iteration" />
-      <Spinner fx:id="iterspeed" layoutX="928.0" layoutY="277.0" prefHeight="26.0" prefWidth="75.0" />
-      <Label layoutX="837.0" layoutY="282.0" prefHeight="16.0" prefWidth="91.0" text="Speed" />
-      <Button fx:id="btnSaveImg" disable="true" layoutX="851.0" layoutY="410.0" mnemonicParsing="false" onAction="#hbtnSaveImg" prefHeight="26.0" prefWidth="137.0" text="Save Image" />
-      <ColorPicker fx:id="colorAnt" layoutX="837.0" layoutY="325.0" />
-      <Button fx:id="btnRandSim" layoutX="837.0" layoutY="368.0" mnemonicParsing="false" onAction="#hbtnRandSim" prefHeight="26.0" prefWidth="163.0" text="Random Simulation" />
+      <Spinner fx:id="iterspeed" layoutX="926.0" layoutY="129.0" prefHeight="26.0" prefWidth="75.0" />
+      <Label layoutX="835.0" layoutY="134.0" prefHeight="16.0" prefWidth="91.0" text="Speed" />
+      <Button fx:id="btnSaveImg" disable="true" layoutX="851.0" layoutY="200.0" mnemonicParsing="false" onAction="#hbtnSaveImg" prefHeight="26.0" prefWidth="137.0" text="Save Image" />
+      <Button fx:id="btnRandSim" layoutX="838.0" layoutY="163.0" mnemonicParsing="false" onAction="#hbtnRandSim" prefHeight="26.0" prefWidth="163.0" text="Random Simulation" />
       <Button fx:id="btnStop" layoutX="921.0" layoutY="13.0" mnemonicParsing="false" onAction="#hbtnStop" prefHeight="26.0" prefWidth="91.0" text="Stop" />
+      <Accordion layoutX="804.0" layoutY="240.0" prefHeight="285.0" prefWidth="208.0">
+        <panes>
+          <TitledPane animated="false" text="Ant 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Spinner fx:id="antposx1" layoutX="100.0" layoutY="16.0" prefHeight="26.0" prefWidth="75.0" />
+                        <Spinner fx:id="antposy1" layoutX="100.0" layoutY="47.0" prefHeight="26.0" prefWidth="75.0" />
+                        <ComboBox fx:id="antdirection1" layoutX="8.0" layoutY="106.0" prefHeight="26.0" prefWidth="163.0" />
+                        <Label layoutX="9.0" layoutY="21.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
+                        <Label layoutX="9.0" layoutY="52.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
+                        <Label layoutX="8.0" layoutY="89.0" prefHeight="16.0" prefWidth="163.0" text="Ant initial Direction" />
+                        <ColorPicker fx:id="colorAnt1" layoutX="8.0" layoutY="140.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane animated="false" text="Ant 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Spinner fx:id="antposx2" layoutX="98.0" layoutY="26.0" prefHeight="26.0" prefWidth="75.0" />
+                        <Spinner fx:id="antposy2" layoutX="98.0" layoutY="57.0" prefHeight="26.0" prefWidth="75.0" />
+                        <ComboBox fx:id="antdirection2" layoutX="7.0" layoutY="110.0" prefHeight="26.0" prefWidth="163.0" />
+                        <Label layoutX="15.0" layoutY="31.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
+                        <Label layoutX="15.0" layoutY="62.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
+                        <Label layoutX="9.0" layoutY="90.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
+                        <ColorPicker fx:id="colorAnt2" layoutX="8.0" layoutY="148.0" />
+                        <CheckBox fx:id="ant2Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+            <TitledPane animated="false" text="Ant 3">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Spinner fx:id="antposx3" layoutX="100.0" layoutY="26.0" prefHeight="26.0" prefWidth="75.0" />
+                        <Spinner fx:id="antposy3" layoutX="100.0" layoutY="56.0" prefHeight="26.0" prefWidth="75.0" />
+                        <ComboBox fx:id="antdirection3" layoutX="8.0" layoutY="105.0" prefHeight="26.0" prefWidth="163.0" />
+                        <Label layoutX="11.0" layoutY="31.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
+                        <Label layoutX="11.0" layoutY="62.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
+                        <Label layoutX="9.0" layoutY="85.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
+                        <ColorPicker fx:id="colorAnt3" layoutX="7.0" layoutY="140.0" />
+                        <CheckBox fx:id="ant3Activate" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+          <TitledPane animated="false" text="Ant 4">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Spinner fx:id="antposx4" layoutX="100.0" layoutY="25.0" prefHeight="26.0" prefWidth="75.0" />
+                        <Spinner fx:id="antposy4" layoutX="100.0" layoutY="57.0" prefHeight="26.0" prefWidth="75.0" />
+                        <ComboBox fx:id="antdirection4" layoutX="12.0" layoutY="107.0" prefHeight="26.0" prefWidth="163.0" />
+                        <Label layoutX="25.0" layoutY="31.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos X" />
+                        <Label layoutX="25.0" layoutY="63.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
+                        <Label layoutX="12.0" layoutY="90.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
+                        <ColorPicker fx:id="colorAnt4" layoutX="14.0" layoutY="140.0" />
+                        <CheckBox fx:id="ant4Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
    </children>
 </AnchorPane>

@@ -38,6 +38,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -66,11 +67,11 @@ public class FXMLMainController implements Initializable {
     @FXML
     private Spinner<Integer> worldsizex;
     @FXML
-    private Spinner<Integer> antposx;
+    private Spinner<Integer> antposx1;
     @FXML
-    private Spinner<Integer> antposy;
+    private Spinner<Integer> antposy1;
     @FXML
-    private ComboBox<String> antdirection;
+    private ComboBox<String> antdirection1;
     @FXML
     private Spinner<Integer> nbiteration;
     @FXML
@@ -78,11 +79,43 @@ public class FXMLMainController implements Initializable {
     @FXML
     private Button btnSaveImg;
     @FXML
-    private ColorPicker colorAnt;
+    private ColorPicker colorAnt1;
     @FXML
     private Button btnRandSim;
+       @FXML
+    private Spinner<Integer> antposx2;
+    @FXML
+    private Spinner<Integer> antposy2;
+    @FXML
+    private ComboBox<String> antdirection2;
+    @FXML
+    private ColorPicker colorAnt2;
+    @FXML
+    private CheckBox ant2Activate;
+    @FXML
+    private Spinner<Integer> antposx3;
+    @FXML
+    private Spinner<Integer> antposy3;
+    @FXML
+    private ComboBox<String> antdirection3;
+    @FXML
+    private ColorPicker colorAnt3;
+    @FXML
+    private CheckBox ant3Activate;
+    @FXML
+    private Spinner<Integer> antposx4;
+    @FXML
+    private Spinner<Integer> antposy4;
+    @FXML
+    private ComboBox<String> antdirection4;
+    @FXML
+    private ColorPicker colorAnt4;
+    @FXML
+    private CheckBox ant4Activate;
+    @FXML
+    private Button btnStop;  
       
-      
+    
     //init values
     private int WIDTH=100;
     private int HEIGHT=100;
@@ -92,14 +125,18 @@ public class FXMLMainController implements Initializable {
     private int initDirection=World.SOUTH;
     private int speed=5;
     private long lifeCycle=0;
-    private javafx.scene.paint.Color colorizedAnt=javafx.scene.paint.Color.WHITE;
+    private javafx.scene.paint.Color colorizedAnt1=javafx.scene.paint.Color.WHITE;
+    private javafx.scene.paint.Color colorizedAnt2=javafx.scene.paint.Color.GREEN;
+    private javafx.scene.paint.Color colorizedAnt3=javafx.scene.paint.Color.RED;
+    private javafx.scene.paint.Color colorizedAnt4=javafx.scene.paint.Color.BLUE;
     private boolean stop=false;
     
     //world and Ant
     private World world;
-    private Ant antRed;
-    
-    private Ant antGreen;
+    private Ant ant1; 
+    private Ant ant2;
+    private Ant ant3; 
+    private Ant ant4;
     
     //writable image
     private WritableImage wimgWorld;
@@ -108,12 +145,19 @@ public class FXMLMainController implements Initializable {
     ObservableList<String> olDirection=javafx.collections.FXCollections.observableArrayList();
   
     SpinnerValueFactory<Integer> wsx;
-    SpinnerValueFactory<Integer> apx;
-    SpinnerValueFactory<Integer> apy;
+   
     SpinnerValueFactory<Integer> nbi;
-    SpinnerValueFactory<Integer> spe;
-    @FXML
-    private Button btnStop;
+    SpinnerValueFactory<Integer> spe; 
+    
+    SpinnerValueFactory<Integer> apx1;
+    SpinnerValueFactory<Integer> apy1;
+     SpinnerValueFactory<Integer> apx2;
+    SpinnerValueFactory<Integer> apy2;
+     SpinnerValueFactory<Integer> apx3;
+    SpinnerValueFactory<Integer> apy3;
+     SpinnerValueFactory<Integer> apx4;
+    SpinnerValueFactory<Integer> apy4;
+ 
   
   
     
@@ -125,32 +169,69 @@ public class FXMLMainController implements Initializable {
         //initialize world / Ant / Spinner / etc...
         wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 500);
         wsx.setValue(100);
-        apx = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
-        apy = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+            apx1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+            apx1.setValue(0);
+        apy1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+        apy1.setValue(0);
+           apx2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+           apx2.setValue(99);
+        apy2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+        apy2.setValue(0);
+           apx3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+            apx3.setValue(0);
+        apy3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+         apy3.setValue(99);
+           apx4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+           apx4.setValue(99);
+        apy4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 99);
+        apy4.setValue(99);
         nbi=new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 1000000);
         nbi.setValue(20000);
         worldsizex.setValueFactory(wsx);
         worldsizex.setEditable(true);
-        antposx.setValueFactory(apx);
-        antposx.setEditable(true);
-        antposy.setValueFactory(apy);
-        antposy.setEditable(true);
+            antposx1.setValueFactory(apx1);
+        antposx1.setEditable(true);
+        antposy1.setValueFactory(apy1);
+        antposy1.setEditable(true);
+              antposx2.setValueFactory(apx2);
+        antposx2.setEditable(true);
+        antposy2.setValueFactory(apy2);
+        antposy2.setEditable(true);
+              antposx3.setValueFactory(apx3);
+        antposx3.setEditable(true);
+        antposy3.setValueFactory(apy3);
+        antposy3.setEditable(true);
+              antposx4.setValueFactory(apx4);
+        antposx4.setEditable(true);
+        antposy4.setValueFactory(apy4);
+        antposy4.setEditable(true);
         nbiteration.setValueFactory(nbi);
         nbiteration.setEditable(true);
         olDirection.add("NORTH");
         olDirection.add("WEST");
         olDirection.add("SOUTH");
         olDirection.add("EST");
-        antdirection.setItems(olDirection);
-        antdirection.getSelectionModel().select(2);
+        antdirection1.setItems(olDirection);
+        antdirection1.getSelectionModel().select(2);
+         antdirection2.setItems(olDirection);
+        antdirection2.getSelectionModel().select(3);
+         antdirection3.setItems(olDirection);
+        antdirection3.getSelectionModel().select(1);
+         antdirection4.setItems(olDirection);
+        antdirection4.getSelectionModel().select(0);
         spe=new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
         spe.setValue(1);
         iterspeed.setValueFactory(spe);
         lifeCycle=0; //fix nb iter at zero
         world=new World();
-        antRed=new Ant();
-        
-        antGreen=new Ant();
+        ant1=new Ant(); 
+        colorAnt1.setValue(javafx.scene.paint.Color.WHITE);
+        ant2=new Ant();
+        colorAnt2.setValue(javafx.scene.paint.Color.GREEN);
+        ant3=new Ant(); 
+        colorAnt3.setValue(javafx.scene.paint.Color.RED);
+        ant4=new Ant(); 
+        colorAnt4.setValue(javafx.scene.paint.Color.BLUE);
     }    
 
     
@@ -170,8 +251,9 @@ public class FXMLMainController implements Initializable {
         lifeCycle=0;      
         maxLife=nbiteration.getValue();
         
-        //and the Ant attributes
-        switch(antdirection.getSelectionModel().getSelectedItem()){
+        //and the Ants attributes
+        //define ant 1
+        switch(antdirection1.getSelectionModel().getSelectedItem()){
             case "NORTH":
                 initDirection=World.NORTH;
                 break;
@@ -185,12 +267,74 @@ public class FXMLMainController implements Initializable {
                 initDirection=World.EST;
                 break;
         }
-        xAnt=apx.getValue();
-        yAnt=apy.getValue();
-        colorizedAnt=colorAnt.getValue(); //get the color choose
-        antRed.set_Ant_pos(xAnt, yAnt, initDirection);   
+        xAnt=apx1.getValue();
+        yAnt=apy1.getValue();
+        colorizedAnt1=colorAnt1.getValue(); //get the color choose
+        ant1.set_Ant_pos(xAnt, yAnt, initDirection);   
         
-        antGreen.set_Ant_pos(10, 10, World.NORTH);
+        
+        //define ant2
+        switch(antdirection2.getSelectionModel().getSelectedItem()){
+            case "NORTH":
+                initDirection=World.NORTH;
+                break;
+            case "WEST":
+                initDirection=World.WEST;
+                break;
+            case "SOUTH":
+                initDirection=World.SOUTH;
+                break;
+            case "EST":
+                initDirection=World.EST;
+                break;
+        }
+        xAnt=apx2.getValue();
+        yAnt=apy2.getValue();
+        colorizedAnt2=colorAnt2.getValue(); //get the color choose
+        ant2.set_Ant_pos(xAnt, yAnt, initDirection);   
+        
+
+        //define ant3
+        switch(antdirection3.getSelectionModel().getSelectedItem()){
+            case "NORTH":
+                initDirection=World.NORTH;
+                break;
+            case "WEST":
+                initDirection=World.WEST;
+                break;
+            case "SOUTH":
+                initDirection=World.SOUTH;
+                break;
+            case "EST":
+                initDirection=World.EST;
+                break;
+        }
+        xAnt=apx3.getValue();
+        yAnt=apy3.getValue();
+        colorizedAnt3=colorAnt3.getValue(); //get the color choose
+        ant2.set_Ant_pos(xAnt, yAnt, initDirection);   
+        
+        
+        //define ant4
+        switch(antdirection4.getSelectionModel().getSelectedItem()){
+            case "NORTH":
+                initDirection=World.NORTH;
+                break;
+            case "WEST":
+                initDirection=World.WEST;
+                break;
+            case "SOUTH":
+                initDirection=World.SOUTH;
+                break;
+            case "EST":
+                initDirection=World.EST;
+                break;
+        }
+        xAnt=apx4.getValue();
+        yAnt=apy4.getValue();
+        colorizedAnt4=colorAnt4.getValue(); //get the color choose
+        ant4.set_Ant_pos(xAnt, yAnt, initDirection);   
+        
         
         //draw the first empty world
         wimgWorld=new WritableImage(WIDTH, HEIGHT);
@@ -206,13 +350,18 @@ Task task = new Task<Void>() {
                //update GUI
                updateMessage("Iteration N° :"+lifeCycle+"/"+maxLife);
                 //move the ant
-               antRed.move();
+               ant1.move();
                
-               antGreen.move();
+               if (ant2Activate.isSelected()) {ant2.move();}
+               if (ant3Activate.isSelected()) {ant3.move();}
+               if (ant4Activate.isSelected()) {ant4.move();}
+               
                //evaluate direction and color
-               antRed.rules.evaluate(antRed.getPosX(), antRed.getPosY(), world,antRed, colorizedAnt);
+               ant1.rules.evaluate(ant1.getPosX(), ant1.getPosY(), world,ant1, colorizedAnt1);
                
-               antGreen.rules.evaluate(antGreen.getPosX(), antGreen.getPosY(), world,antGreen, javafx.scene.paint.Color.GREEN);
+               if (ant2Activate.isSelected()) {ant2.rules.evaluate(ant2.getPosX(), ant2.getPosY(), world,ant2, colorizedAnt2);}
+                 if (ant3Activate.isSelected()) {ant3.rules.evaluate(ant3.getPosX(), ant3.getPosY(), world,ant3, colorizedAnt3);}
+                   if (ant4Activate.isSelected()) {ant4.rules.evaluate(ant4.getPosX(), ant4.getPosY(), world,ant4, colorizedAnt4);}
                //ooh not too speed please!!!
                Thread.sleep(speed);
                //and repeat repeat repeat ----::>
@@ -227,7 +376,7 @@ Task task = new Task<Void>() {
            btnRun.setDisable(false);
         return null; //when finished
     }
-};
+        };
 
            //say that an update GUI must update the label itration and the world image
            task.messageProperty().addListener((obs, oldMessage, newMessage) -> {lbIter.setText(newMessage);draw_World();});
@@ -300,11 +449,11 @@ Task task = new Task<Void>() {
         wsx.setValue((int)(Math.random()*400));
         
         //select ant Position
-        apx.setValue((int)(Math.random()*wsx.getValue()));
-        apy.setValue((int)(Math.random()*wsx.getValue()));
+        apx1.setValue((int)(Math.random()*wsx.getValue()));
+        apy1.setValue((int)(Math.random()*wsx.getValue()));
         
         //select direction
-        antdirection.getSelectionModel().select((int)(Math.random()*4));
+        antdirection1.getSelectionModel().select((int)(Math.random()*4));
     }
 
     
@@ -331,12 +480,12 @@ Task task = new Task<Void>() {
     @FXML
     private void mcSpinWorldChange(MouseEvent event) {
     int max;
-    if (antposx.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposx.getValue();}
-    apx=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
-    antposx.setValueFactory(apx);
-    if (antposy.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposy.getValue();}
-    apy=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
-    antposy.setValueFactory(apy);
+    if (antposx1.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposx1.getValue();}
+    apx1=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
+    antposx1.setValueFactory(apx1);
+    if (antposy1.getValue()>wsx.getValue()) {max=wsx.getValue();} else {max=antposy1.getValue();}
+    apy1=new SpinnerValueFactory.IntegerSpinnerValueFactory(0, wsx.getValue(), max);
+    antposy1.setValueFactory(apy1);
     
     }
 
