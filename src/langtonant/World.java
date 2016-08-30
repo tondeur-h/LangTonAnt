@@ -64,9 +64,7 @@ public class World {
         sizeX=x;
         sizeY=y;
         location.setSize(x*y);
-         for (int pos=0;pos<x*y;pos++){
-        location.add(pos, new Color(false, "none"));
-    }
+         for (int pos=0;pos<x*y;pos++){location.add(pos, new Color(false, javafx.scene.paint.Color.BLACK));}
     }
     
     //read only World size

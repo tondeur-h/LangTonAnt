@@ -38,8 +38,9 @@ public class Rules {
      * @param y
      * @param world
      * @param ant
+     * @param currentColor
      */
-    public void evaluate(int x,int y,World world, Ant ant){
+    public void evaluate(int x,int y,World world, Ant ant, javafx.scene.paint.Color currentColor){
     // Rules are very basics
      //At a black square, turn 90° left, flip the color of the square, move forward one unit
     //At a white square, turn 90° right, flip the color of the square, move forward one unit
@@ -48,8 +49,8 @@ public class Rules {
       
        ant.setDirection(turnRIGHT(ant.getDirection())); 
        System.out.println("turn right=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
-       //change color to none
-       world.getLocation().set(World.XY2I(x, y), new Color(false,"NONE"));
+       //change color to BLACK
+       world.getLocation().set(World.XY2I(x, y), new Color(false,javafx.scene.paint.Color.BLACK));
        
    }
    else
@@ -59,7 +60,7 @@ public class Rules {
        ant.setDirection(turnLEFT(ant.getDirection()));
        System.out.println("turn left=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
        //change color to currentColor
-        world.getLocation().set(World.XY2I(x, y), new Color(true,"RED"));
+        world.getLocation().set(World.XY2I(x, y), new Color(true,currentColor));
    }
     
     }

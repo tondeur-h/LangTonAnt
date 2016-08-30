@@ -30,14 +30,14 @@ package langtonant;
 public class Color {
    //color colorized
    boolean colorized=false;
-   String colorS="none";
+   javafx.scene.paint.Color colorS;
 
     /**
      * constructor
      */
     public Color() {
         colorized=false;
-        colorS="none"; 
+        colorS=new javafx.scene.paint.Color(0, 0, 0, 0); 
     }
     
     /**
@@ -45,7 +45,7 @@ public class Color {
      * @param colorize
      * @param colorName
      */
-    public Color(boolean colorize, String colorName){
+    public Color(boolean colorize, javafx.scene.paint.Color colorName){
         colorized=colorize;
         colorS=colorName;
     }
@@ -70,7 +70,7 @@ public class Color {
      *
      * @return
      */
-    public String getColorS() {
+    public javafx.scene.paint.Color getColorS() {
         return colorS;
     }
 
@@ -78,7 +78,7 @@ public class Color {
      *
      * @param colorS
      */
-    public void setColorS(String colorS) {
+    public void setColorS(javafx.scene.paint.Color colorS) {
         this.colorS = colorS;
     }
    

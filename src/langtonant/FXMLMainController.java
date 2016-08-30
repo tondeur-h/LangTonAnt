@@ -99,6 +99,8 @@ public class FXMLMainController implements Initializable {
     private World world;
     private Ant antRed;
     
+    private Ant antGreen;
+    
     //writable image
     private WritableImage wimgWorld;
     
@@ -147,6 +149,8 @@ public class FXMLMainController implements Initializable {
         lifeCycle=0; //fix nb iter at zero
         world=new World();
         antRed=new Ant();
+        
+        antGreen=new Ant();
     }    
 
     
@@ -186,6 +190,8 @@ public class FXMLMainController implements Initializable {
         colorizedAnt=colorAnt.getValue(); //get the color choose
         antRed.set_Ant_pos(xAnt, yAnt, initDirection);   
         
+        antGreen.set_Ant_pos(10, 10, World.NORTH);
+        
         //draw the first empty world
         wimgWorld=new WritableImage(WIDTH, HEIGHT);
         imgWorld.setSmooth(true);
@@ -201,8 +207,12 @@ Task task = new Task<Void>() {
                updateMessage("Iteration N° :"+lifeCycle+"/"+maxLife);
                 //move the ant
                antRed.move();
+               
+               antGreen.move();
                //evaluate direction and color
-               antRed.rules.evaluate(antRed.getPosX(), antRed.getPosY(), world,antRed);
+               antRed.rules.evaluate(antRed.getPosX(), antRed.getPosY(), world,antRed, colorizedAnt);
+               
+               antGreen.rules.evaluate(antGreen.getPosX(), antGreen.getPosY(), world,antGreen, javafx.scene.paint.Color.GREEN);
                //ooh not too speed please!!!
                Thread.sleep(speed);
                //and repeat repeat repeat ----::>
@@ -235,7 +245,7 @@ Task task = new Task<Void>() {
             for (int y=0;y<HEIGHT;y++){
                 if (world.getLocation().get((WIDTH*y)+x).isColorized()){
                     //System.out.print("(x,y)=("+x+","+y+")&");
-                    wimgWorld.getPixelWriter().setColor(x, y, colorizedAnt);
+                    wimgWorld.getPixelWriter().setColor(x, y, world.getLocation().get((WIDTH*y)+x).getColorS());
                 }
                 else 
                 {
