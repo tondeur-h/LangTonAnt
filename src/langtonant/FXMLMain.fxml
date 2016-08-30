@@ -82,7 +82,7 @@ SOFTWARE.
                         <Label layoutX="15.0" layoutY="62.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
                         <Label layoutX="9.0" layoutY="90.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
                         <ColorPicker fx:id="colorAnt2" layoutX="8.0" layoutY="148.0" />
-                        <CheckBox fx:id="ant2Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                        <CheckBox fx:id="ant2Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" selected="true" text="Active" />
                      </children>
                   </AnchorPane>
             </content>
@@ -98,7 +98,7 @@ SOFTWARE.
                         <Label layoutX="11.0" layoutY="62.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
                         <Label layoutX="9.0" layoutY="85.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
                         <ColorPicker fx:id="colorAnt3" layoutX="7.0" layoutY="140.0" />
-                        <CheckBox fx:id="ant3Activate" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                        <CheckBox fx:id="ant3Activate" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" selected="true" text="Active" />
                      </children>
                   </AnchorPane>
               </content>
@@ -114,7 +114,7 @@ SOFTWARE.
                         <Label layoutX="25.0" layoutY="63.0" prefHeight="16.0" prefWidth="98.0" text="Ant pos Y" />
                         <Label layoutX="12.0" layoutY="90.0" prefHeight="16.0" prefWidth="150.0" text="Ant initial Direction" />
                         <ColorPicker fx:id="colorAnt4" layoutX="14.0" layoutY="140.0" />
-                        <CheckBox fx:id="ant4Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" text="Active" />
+                        <CheckBox fx:id="ant4Activate" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="163.0" selected="true" text="Active" />
                      </children>
                   </AnchorPane>
             </content>
