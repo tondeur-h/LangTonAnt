@@ -19,6 +19,10 @@ You can stop the simulation when you want with the Stop Button.
 
 You can save your most beautiful creation by making a Screen Shot with the Save Button, produce a png file  snapshot and write this file directly under the application directory with a unique name.
 
+Download the compiled Jar at http://tondeurh.fr/software/LangTonAnt.jar
+
+run it with the command : java -jar LangTonAnt.jar (in a console!)
+
 Enjoy, it's funny and free!
 
 TH
