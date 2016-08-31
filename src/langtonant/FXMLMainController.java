@@ -200,21 +200,21 @@ public class FXMLMainController implements Initializable {
         wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 500);
         wsx.setValue(250);
             apx1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-            apx1.setValue(0);
+            apx1.setValue(125);
         apy1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-        apy1.setValue(0);
+        apy1.setValue(124);
            apx2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-           apx2.setValue(249);
+           apx2.setValue(126);
         apy2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-        apy2.setValue(0);
+        apy2.setValue(125);
            apx3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-            apx3.setValue(0);
+            apx3.setValue(125);
         apy3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-         apy3.setValue(249);
+         apy3.setValue(126);
            apx4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-           apx4.setValue(249);
+           apx4.setValue(124);
         apy4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-        apy4.setValue(249);
+        apy4.setValue(125);
         
         nbi=new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 1000000);
         nbi.setValue(100000);
@@ -247,13 +247,13 @@ public class FXMLMainController implements Initializable {
         olDirection.add("SOUTH");
         olDirection.add("EST");
         antdirection1.setItems(olDirection);
-        antdirection1.getSelectionModel().select(2);
+        antdirection1.getSelectionModel().select(0);
          antdirection2.setItems(olDirection);
         antdirection2.getSelectionModel().select(3);
          antdirection3.setItems(olDirection);
-        antdirection3.getSelectionModel().select(1);
+        antdirection3.getSelectionModel().select(2);
          antdirection4.setItems(olDirection);
-        antdirection4.getSelectionModel().select(0);
+        antdirection4.getSelectionModel().select(1);
         
         spe=new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
         spe.setValue(1);
