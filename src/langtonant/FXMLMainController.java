@@ -26,6 +26,8 @@ package langtonant;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,7 +115,17 @@ public class FXMLMainController implements Initializable {
     @FXML
     private CheckBox ant4Activate;
     @FXML
-    private Button btnStop;  
+    private Button btnStop; 
+    @FXML
+    private Label lbTotalCellsNb;
+    @FXML
+    private Label lbAnt1CellsNb;
+    @FXML
+    private Label lbAnt2CellsNb;
+    @FXML
+    private Label lbAnt3CellsNb;
+    @FXML
+    private Label lbAnt4CellsNb;
       
     //ants names
     final String ANT1="CEPHALOTES";
@@ -122,8 +134,8 @@ public class FXMLMainController implements Initializable {
     final String ANT4="DRACULA";
     
     //init values
-    private int WIDTH=500;
-    private int HEIGHT=500;
+    private int WIDTH=250;
+    private int HEIGHT=250;
     private int maxLife=20000;
     private int xAnt=0;
     private int yAnt=0;
@@ -163,37 +175,40 @@ public class FXMLMainController implements Initializable {
     SpinnerValueFactory<Integer> apy3;
     SpinnerValueFactory<Integer> apx4;
     SpinnerValueFactory<Integer> apy4;
- 
-  
-  
-    
-   
-    
+
+    //cells counters
+    int nbTotalCells=0;
+    int ant1nbCells=0;
+    int ant2nbCells=0;
+    int ant3nbCells=0;
+    int ant4nbCells=0;
+    NumberFormat formatter;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        formatter = new DecimalFormat("#0.000");
         //initialize world / Ant / Spinner / etc...
         wsx = new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 500);
-        wsx.setValue(500);
+        wsx.setValue(250);
             apx1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
             apx1.setValue(0);
         apy1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
         apy1.setValue(0);
            apx2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-           apx2.setValue(499);
+           apx2.setValue(249);
         apy2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
         apy2.setValue(0);
            apx3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
             apx3.setValue(0);
         apy3 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-         apy3.setValue(499);
+         apy3.setValue(249);
            apx4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-           apx4.setValue(499);
+           apx4.setValue(249);
         apy4 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 499);
-        apy4.setValue(499);
+        apy4.setValue(249);
         
         nbi=new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 1000000);
-        nbi.setValue(200000);
+        nbi.setValue(100000);
         
         worldsizex.setValueFactory(wsx);
         worldsizex.setEditable(true);
@@ -267,11 +282,19 @@ public class FXMLMainController implements Initializable {
          btnStop.setDisable(false);
          stop=false;
        
+         //reset counters
+         nbTotalCells=0;
+         ant1nbCells=0;
+         ant2nbCells=0;
+         ant3nbCells=0;
+         ant4nbCells=0;
+         
          //first the World
         WIDTH=wsx.getValue();
         HEIGHT=wsx.getValue(); 
         world.init_world(WIDTH, HEIGHT);
-       
+        nbTotalCells=WIDTH*HEIGHT;
+        
         //Caracteristics of the life Cycle
         speed=iterspeed.getValue();
         lifeCycle=0;      
@@ -424,6 +447,10 @@ Task task = new Task<Void>() {
      **************************************************************************/
     public synchronized void draw_World(){
        //for each cells 
+       ant1nbCells=0;
+       ant2nbCells=0;
+       ant3nbCells=0;
+       ant4nbCells=0;
         for (int x=0;x<WIDTH;x++){
             for (int y=0;y<HEIGHT;y++){
                 //test is colorized
@@ -431,6 +458,10 @@ Task task = new Task<Void>() {
                     //System.out.print("(x,y)=("+x+","+y+")&");
                     //yes draw a point with this color
                     wimgWorld.getPixelWriter().setColor(x, y, world.getLocation().get((WIDTH*y)+x).getColorS());
+                    if (world.getLocation().get((WIDTH*y)+x).getName().compareTo(ANT1)==0){ant1nbCells++;}
+                    if (world.getLocation().get((WIDTH*y)+x).getName().compareTo(ANT2)==0){ant2nbCells++;}
+                    if (world.getLocation().get((WIDTH*y)+x).getName().compareTo(ANT3)==0){ant3nbCells++;}
+                    if (world.getLocation().get((WIDTH*y)+x).getName().compareTo(ANT4)==0){ant4nbCells++;}
                 }
                 else 
                 {
@@ -440,6 +471,13 @@ Task task = new Task<Void>() {
             }
         }
         imgWorld.setImage(wimgWorld); //show me the result on scsreen
+        
+        //refresh counters
+        lbTotalCellsNb.setText(nbTotalCells+" cells");
+        lbAnt1CellsNb.setText(ant1nbCells+" cells ("+formatter.format(((double)ant1nbCells/nbTotalCells)*100)+"%)");
+        lbAnt2CellsNb.setText(ant2nbCells+" cells ("+formatter.format(((double)ant2nbCells/nbTotalCells)*100)+"%)");
+        lbAnt3CellsNb.setText(ant3nbCells+" cells ("+formatter.format(((double)ant3nbCells/nbTotalCells)*100)+"%)");
+        lbAnt4CellsNb.setText(ant4nbCells+" cells ("+formatter.format(((double)ant4nbCells/nbTotalCells)*100)+"%)");
     }
 
     /***************************************************************

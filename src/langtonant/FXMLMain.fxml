@@ -12,30 +12,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<!--
-MIT License
-
-Copyright (c) 2016 Tondeur Herve
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
--->
-
 <AnchorPane id="AnchorPane" prefHeight="0.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="langtonant.FXMLMainController">
    <children>
       <ImageView fx:id="imgWorld" fitHeight="800.0" fitWidth="800.0" layoutX="1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="216.0" AnchorPane.topAnchor="3.0">
@@ -121,5 +97,23 @@ SOFTWARE.
           </TitledPane>
         </panes>
       </Accordion>
+      <TitledPane animated="false" layoutX="804.0" layoutY="531.0" prefHeight="206.0" prefWidth="208.0" text="World infos">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="6.0" prefHeight="17.0" prefWidth="114.0" text="Total Cells Number :" underline="true" />
+                  <Label layoutX="6.0" layoutY="31.0" prefHeight="17.0" prefWidth="178.0" text="NB cells occupied by the Ant 1 :" underline="true" />
+                  <Label layoutX="6.0" layoutY="66.0" prefHeight="17.0" prefWidth="178.0" text="NB cells occupied by the Ant 2 :" underline="true" />
+                  <Label layoutX="6.0" layoutY="101.0" prefHeight="17.0" prefWidth="178.0" text="NB cells occupied by the Ant 3 :" underline="true" />
+                  <Label layoutX="6.0" layoutY="136.0" prefHeight="17.0" prefWidth="178.0" text="NB cells occupied by the Ant 4 :" underline="true" />
+                  <Label fx:id="lbTotalCellsNb" layoutX="8.0" layoutY="15.0" prefHeight="17.0" prefWidth="153.0" text="--" />
+                  <Label fx:id="lbAnt1CellsNb" layoutX="6.0" layoutY="48.0" prefHeight="17.0" prefWidth="153.0" text="--" />
+                  <Label fx:id="lbAnt2CellsNb" layoutX="5.0" layoutY="84.0" prefHeight="17.0" prefWidth="153.0" text="--" />
+                  <Label fx:id="lbAnt3CellsNb" layoutX="4.0" layoutY="118.0" prefHeight="17.0" prefWidth="153.0" text="--" />
+                  <Label fx:id="lbAnt4CellsNb" layoutX="4.0" layoutY="152.0" prefHeight="17.0" prefWidth="153.0" text="--" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
    </children>
 </AnchorPane>
