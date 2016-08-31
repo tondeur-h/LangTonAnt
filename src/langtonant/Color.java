@@ -29,15 +29,18 @@ package langtonant;
  */
 public class Color {
    //color colorized
-   boolean colorized=false;
-   javafx.scene.paint.Color colorS;
+   boolean colorized=false; //is there a color in this cell
+   javafx.scene.paint.Color colorS; //color of the cell
+   String name="none"; //name of the colored ant in this cell
 
+   
     /**
      * constructor
      */
     public Color() {
         colorized=false;
         colorS=new javafx.scene.paint.Color(0, 0, 0, 0); 
+        name="none";
     }
     
     /**
@@ -45,9 +48,10 @@ public class Color {
      * @param colorize
      * @param colorName
      */
-    public Color(boolean colorize, javafx.scene.paint.Color colorName){
+    public Color(boolean colorize, javafx.scene.paint.Color colorName, String nameS){
         colorized=colorize;
         colorS=colorName;
+        name=nameS;
     }
 
     /**
@@ -82,6 +86,12 @@ public class Color {
         this.colorS = colorS;
     }
    
-   
+     public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
 }

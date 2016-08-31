@@ -50,7 +50,7 @@ public class Rules {
        ant.setDirection(turnRIGHT(ant.getDirection())); 
        //System.out.println("turn right=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
        //change color to BLACK
-       world.getLocation().set(World.XY2I(x, y), new Color(false,javafx.scene.paint.Color.BLACK));
+       world.getLocation().set(World.XY2I(x, y), new Color(false,javafx.scene.paint.Color.BLACK,ant.getName()));
        
    }
    else
@@ -60,7 +60,7 @@ public class Rules {
        ant.setDirection(turnLEFT(ant.getDirection()));
        //System.out.println("turn left=>direction="+ ant.getDirection()+" poxX="+ant.getPosX()+" posY="+ant.getPosY());
        //change color to currentColor
-        world.getLocation().set(World.XY2I(x, y), new Color(true,currentColor));
+        world.getLocation().set(World.XY2I(x, y), new Color(true,currentColor,ant.getName()));
    }
     
     }

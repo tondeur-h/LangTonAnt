@@ -115,6 +115,11 @@ public class FXMLMainController implements Initializable {
     @FXML
     private Button btnStop;  
       
+    //ants names
+    final String ANT1="CEPHALOTES";
+    final String ANT2="BULLDOGS";
+    final String ANT3="CHMITZI";
+    final String ANT4="DRACULA";
     
     //init values
     private int WIDTH=500;
@@ -234,17 +239,17 @@ public class FXMLMainController implements Initializable {
         
         world=new World(); //create world
         
-        //create Ants
-        ant1=new Ant(); 
+        //create Ants with a name
+        ant1=new Ant(ANT1); 
         colorAnt1.setValue(javafx.scene.paint.Color.WHITE);
         
-        ant2=new Ant();
+        ant2=new Ant(ANT2);
         colorAnt2.setValue(javafx.scene.paint.Color.GREEN);
         
-        ant3=new Ant(); 
+        ant3=new Ant(ANT3); 
         colorAnt3.setValue(javafx.scene.paint.Color.RED);
         
-        ant4=new Ant(); 
+        ant4=new Ant(ANT4); 
         colorAnt4.setValue(javafx.scene.paint.Color.BLUE);
     }    
 

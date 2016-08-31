@@ -32,19 +32,21 @@ public class Ant {
   
     
     //caracteristics
-    int posX=0;
+    int posX=0; //ihis initial X & Y position
     int posY=0;
-    int direction=World.NORTH;
-    Rules rules;
+    int direction=World.NORTH; //his initial direction
+    Rules rules; //rules for this Ant
+    String name; //name of this Ant
 
     
     /**
      * constructor
      */
-    public Ant() {
+    public Ant(String name) {
     //do nothing
     rules=new Rules();
         set_Ant_pos(posX, posY, direction);
+        this.name=name;
     }
    
     /**
@@ -148,6 +150,13 @@ public class Ant {
         this.direction = direction;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
     
     
