@@ -46,6 +46,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.InputMethodEvent;
@@ -183,6 +184,14 @@ public class FXMLMainController implements Initializable {
     int ant3nbCells=0;
     int ant4nbCells=0;
     NumberFormat formatter;
+    @FXML
+    private TitledPane ant1TitledPane;
+    @FXML
+    private TitledPane ant2TitledPane;
+    @FXML
+    private TitledPane ant3TitledPane;
+    @FXML
+    private TitledPane ant4TitledPane;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -266,6 +275,11 @@ public class FXMLMainController implements Initializable {
         
         ant4=new Ant(ANT4); 
         colorAnt4.setValue(javafx.scene.paint.Color.BLUE);
+    
+        ant1TitledPane.setText("Ant 1 - "+ANT1);
+        ant2TitledPane.setText("Ant 2 - "+ANT2);
+        ant3TitledPane.setText("Ant 3 - "+ANT3);
+        ant4TitledPane.setText("Ant 4 - "+ANT4);
     }    
 
     
